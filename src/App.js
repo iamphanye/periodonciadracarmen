@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AOS from 'aos';
+import process from 'process';
+import 'aos/dist/aos.css';
+
+import Navbar from './components/navbar';
+import Footer from './components/footer';
+import Inicio from './pages/inicio';
+import Servicios from './pages/servicios';
+import Ubicacion from './pages/ubicacion';
+import Contacto from './pages/contacto';
+import Limpieza from './pages/limpieza';
+import Periodontal from './pages/periodontal';
+import Curetaje from './pages/curetaje';
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // milisegundos
+      once: true,     // se ejecuta solo una vez por scroll
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <div className="container mt-4">
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/servicios" element={<Servicios />} />
+          <Route path="/ubicacion" element={<Ubicacion />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/limpieza" element={<Limpieza />} />
+    <Route path="/periodontal" element={<Periodontal />} />
+    <Route path="/curetaje" element={<Curetaje />} />
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
   );
 }
 
