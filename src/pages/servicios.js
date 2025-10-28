@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import ServicioCard from '../components/ServicioCard';
 import { useEffect, useState } from 'react';
 import { FaTooth, FaTags, FaLock } from 'react-icons/fa';
 
